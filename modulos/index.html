@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Gym</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos globales */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #000; /* Fondo negro general */
+            color: #fff; /* Texto en blanco */
+            margin: 0;
+        }
+
+        /* Menú de navegación */
+        .navbar {
+            background-color: #000; /* Fondo negro del menú */
+        }
+        .navbar-nav .nav-link {
+            color: #fff !important; /* Texto blanco para los enlaces */
+        }
+        .navbar-brand {
+            color: #06f70e; /* Logo del menú en verde */
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        /* Slogan */
+        .slogan {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #000;
+            color: #fff;
+            padding: 60px 40px; /* Espaciado interno del slogan */
+            text-align: left;
+            font-size: 4em; /* Tamaño de fuente del slogan */
+            font-weight: bold;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7); /* Sombra de texto */
+        }
+
+        .slogan-text {
+            max-width: 60%; /* Ancho máximo del texto del slogan */
+        }
+
+        .slogan img {
+            max-width: 35%; /* Ancho máximo de la imagen del slogan */
+            border-radius: 8px;
+        }
+
+        /* Carrusel */
+        .carousel-item img {
+            width: 100%;
+            height: 60vh;
+            object-fit: cover; /* Asegura que la imagen se ajuste correctamente */
+            margin-bottom: 15px; /* Añade espacio entre los items del carrusel */
+        }
+
+        /* Títulos de secciones */
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin: 40px 0;
+            color: #fff;
+        }
+
+        /* Descripción debajo del slogan */
+        .description {
+            text-align: center;
+            font-size: 1.5em;
+            margin-top: 20px;
+            color: #fff;
+        }
+
+        /* Servicios */
+        .services-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .service-button {
+            background-color: #0feb17; /* Botón verde */
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .service-button:hover {
+            background-color: #15f820; /* Cambio de color al pasar el cursor */
+        }
+
+        /* Menú desplegable */
+        .dropdown-menu {
+            background-color: #808080; /* Fondo gris */
+        }
+
+        .dropdown-item {
+            color: #fff !important; /* Texto blanco */
+        }
+
+        .dropdown-item:hover {
+            background-color: #666666; /* Hover en gris más oscuro */
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        /* Tarjetas de planes */
+        .plan-card {
+            max-width: 100%;
+            height: auto;
+            background-color: #000;
+            border: 2px solid #20dd20;
+            border-radius: 10px;
+            padding: 20px;
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .plan-title {
+            color: #29e629;
+        }
+
+        .plan-description {
+            color: #fff;
+        }
+
+        /* Instructores */
+        .instructor-image {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border: 2px solid #1af522; /* Borde verde */
+        }
+
+        /* Descripción breve debajo del slogan */
+        .brief-description {
+            text-align: center;
+            font-size: 1.2em;
+            margin-top: 20px;
+            color: #fff;
+        }
+        /* Estilo de los textos */
+        .contact-header {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #0feb17; /* Color verde fluorescente */
+            margin-bottom: 10px;
+        }
+
+        .contact-text {
+            font-size: 1.2em;
+            color: #0feb17; /* Color verde fluorescente */
+            margin-bottom: 20px;
+        }
+
+        /* Estilo de los campos del formulario */
+        .form-control {
+            background-color: #fff;
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        /* Estilo del botón */
+        .btn-submit {
+            background-color: #16ad1b; /* Botón verde fluorescente */
+            color: white;
+            padding: 12px 20px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Efecto hover del botón */
+        .btn-submit:hover {
+            background-color: #0cf116;
+        }
+
+        /* Efecto cuando se presiona el botón */
+        .btn-submit:active {
+            background-color: #d8d8d8;
+        }
+        .espacio-life {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .foto-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .foto-item {
+        text-align: center;
+        width: 23%;
+    }
+
+    .foto {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        font-size: 1.2em;
+        margin-top: 10px;
+    }
+
+    p {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        line-height: 1.6;
+    }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+            <h1 style="color: rgb(63, 236, 36); margin-right: 10px;">LIFE</h1> 
+            <h1 style="color: rgb(228, 228, 228);">GYM</h1>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="planes.php">Planes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="productos.html">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#contact">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="mision vision.html">Mision Vision</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="mision vision.html">Quienes Somos</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Calendario
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Clases Personalizadas</a></li>
+                            <li><a class="dropdown-item" href="eventos.html">Eventos hym Life Gym</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- Botón cerrar sesión -->
+                <button id="logoutBtn" class="btn" style="background-color: #1cd222; color: white;">
+                    Cerrar Sesión
+                  </button>
+                  
+                  <!-- Asegúrate de enlazar el script al final del body -->
+                  <script src="registro.js"></script>
+                  
+        </div>
+    </nav>
+    
+    <div class="slogan">
+        <div class="slogan-text">DESPIERTA TU FUERZA INTERIOR, ALCANZA LO IMPOSIBLE</div>
+        <img src="111.png" alt="Imagen inspiradora" />
+    </div>
+    
+    <div id="carouselExampleAutoplaying" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active"><img src="life.png" class="d-block w-100" alt="Entrenamiento 1"></div>
+            <div class="carousel-item"><img src="mancuerna.png" class="d-block w-100" alt="Entrenamiento 2"></div>
+            <div class="carousel-item"><img src="444.jpg" class="d-block w-100" alt="Entrenamiento 3"></div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    
+    <div id="instructors" class="py-5">
+        <h2 class="section-title text-center">Life Gym: Transformamos tu vida con instructores calificados.</h2>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-3 text-center">
+                    <img src="equipo.png" alt="Instructor 1" class="instructor-image">
+                    <p>INSTRUCTORES CALIFICADOS </p>
+                </div>
+                <div class="col-md-3 text-center">
+                    <img src="equipo 2.png" alt="Instructor 2" class="instructor-image">
+                </div>
+                <div class="col-md-3 text-center">
+                    <img src="nicolas.jpg" alt="Instructor 3" class="instructor-image">
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="espacio-life">
+        <h1>Descubre Life Gym: innovación, bienestar y entrenamiento de alto nivel.</h1> <br>
+        <p>Bienvenidos a nuestro espacio de bienestar y salud. En Espacio Life encontrarás un ambiente moderno y confortable donde podrás disfrutar de nuestras instalaciones de última tecnología, diseñadas para ayudarte a alcanzar tus objetivos físicos. Ya sea que estés buscando mejorar tu fuerza, flexibilidad o resistencia, en Life Gym contamos con los mejores equipos y profesionales para apoyarte en tu viaje fitness.</p>
+        <div class="foto-container">
+            <div class="foto-item">
+                <img src="444.jpg" alt="Foto del gimnasio 1" class="foto">
+                <h2>Entrenamiento Superior</h2>
+            </div>
+            <div class="foto-item">
+                <img src="444.jpg" alt="Foto del gimnasio 2" class="foto">
+                <h2>Entrenamiento Superior</h2>
+            </div>
+            <div class="foto-item">
+                <img src="444.jpg" alt="Foto del gimnasio 3" class="foto">
+                <h2>Entrenamiento Superior</h2>
+            </div>
+            <div class="foto-item">
+                <img src="444.jpg" alt="Foto del gimnasio 4" class="foto">
+                <h2>Entrenamiento Superior</h2>
+            </div>
+        </div>
+    </section>
+
+    <div id="carouselExampleAutoplaying" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active"><img src="life.png" class="d-block w-100" alt="Entrenamiento 1"></div>
+            <div class="carousel-item"><img src="789.png" class="d-block w-100" alt="Entrenamiento 2"></div>
+            <div class="carousel-item"><img src="444.jpg" class="d-block w-100" alt="Entrenamiento 3"></div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    
+
+    <!-- El resto del contenido sigue igual -->
+
+<!-- Contacto -->
+<div id="contact" class="container my-5">
+    <h2 class="contact-header text-center">Contáctanos</h2>
+    <p class="contact-text text-center">¡Déjanos tu mensaje!</p>
+
+    <form id="contact-form">
+        <div class="mb-3">
+            <input type="text" class="form-control" name="nombre" placeholder="Nombre" required>
+        </div>
+        <div class="mb-3">
+            <input type="email" class="form-control" name="email" placeholder="Correo electrónico" required>
+        </div>
+        
+        <div class="mb-3">
+            <textarea class="form-control" name="mensaje" rows="5" placeholder="Mensaje" required></textarea>
+        </div>
+        <button type="submit" class="btn-submit btn btn-primary">Enviar</button>
+    </form>
+
+    <div id="mensaje-estado" class="text-center mt-3"></div>
+</div>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#contact-form").submit(function (event) {
+            event.preventDefault(); // Evita recarga
+    
+            var formData = $(this).serialize(); // Serializa el formulario
+    
+            $.ajax({
+                type: "POST",
+                url: "contacto.php", // ✅ Ruta corregida
+                data: formData,
+                success: function (response) {
+                    $('#contact-form')[0].reset(); // Limpia el formulario
+                    $('#mensaje-estado').html('<div class="alert alert-success">' + response + '</div>');
+                },
+                error: function () {
+                    $('#mensaje-estado').html('<div class="alert alert-danger">Hubo un error al enviar el mensaje.</div>');
+                }
+            });
+        });
+    });
+</script>
+
+
+
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 Life Gym. Todos los derechos reservados.</p>
+    </footer>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
