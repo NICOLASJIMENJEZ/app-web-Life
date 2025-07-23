@@ -1,15 +1,16 @@
 <?php
-// Parámetros de conexión
-$servername = "localhost"; // Nombre del servidor
-$username = "root"; // Usuario de la base de datos
-$password = "903135Nicolas"; // Contraseña del usuario
-$dbname = "Life_Gym"; // Nombre de la base de datos
+$url = getenv("MYSQL_URL");
+$dbparts = parse_url($url);
 
-// Crear la conexión
-$conexion = new mysqli($servername, $username, $password, $dbname);
+$host = $dbparts["host"];
+$user = $dbparts["user"];
+$pass = $dbparts["pass"];
+$port = $dbparts["port"];
+$db   = ltrim($dbparts["path"], '/');
 
-// Verificar si hay error en la conexión
-if ($conexion->connect_error) {
-    die("Error de conexión: " . $conexion->connect_error);
+$conn = new mysqli($host, $user, $pass, $db, $port);
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
 }
+// echo "Conectado a Railway con éxito";
 ?>
