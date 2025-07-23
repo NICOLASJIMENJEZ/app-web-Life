@@ -1,0 +1,228 @@
+/* === GLOBAL === */
+body {
+  background-color: #000; /* Fondo negro total */
+  color: #ccc; /* Texto gris claro */
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+
+/* === NAVBAR SUPERIOR === */
+.navbar {
+  background-color: #111; /* Gris oscuro */
+  border-bottom: 2px solid #1cd222;
+}
+
+.navbar-brand {
+  color: #1cd222;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.navbar .btn-danger {
+  background-color: #1cd222;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.navbar .btn-danger:hover {
+  background-color: #16a418;
+  color: #fff;
+}
+
+/* === SIDEBAR === */
+.sidebar {
+  background-color: #111;
+  height: 100vh;
+  padding-top: 20px;
+}
+
+.sidebar a {
+  color: #ccc;
+  padding: 15px;
+  display: block;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar a:hover {
+  background-color: #1cd222;
+  color: #000;
+}
+
+/* === CONTENIDO PRINCIPAL === */
+.content {
+  padding: 30px;
+  background-color: #0d0d0d;
+  min-height: 100vh;
+}
+
+.content h2 {
+  color: #1cd222;
+  font-weight: bold;
+}
+
+.content p {
+  color: #bbb;
+  font-size: 1.1rem;
+}
+
+/* === CARDS === */
+.card {
+  background-color: #1a1a1a;
+  border: 1px solid #1cd222;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #1cd22244;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px #1cd22288;
+}
+
+.card-title {
+  color: #1cd222;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.card-text {
+  color: #eee;
+  font-size: 1.1rem;
+}
+
+/* === BOTONES === */
+.btn-outline-light {
+  border: 1px solid #1cd222;
+  color: #1cd222;
+  font-weight: bold;
+}
+
+.btn-outline-light:hover {
+  background-color: #1cd222;
+  color: #000;
+}
+
+/* === RESPONSIVE (sidebar colapsable si quieres hacerlo futuro) === */
+@media (max-width: 768px) {
+  .sidebar {
+    height: auto;
+    padding: 10px;
+  }
+
+  .content {
+    padding: 20px;
+  }
+}
+
+/*clases.php*/
+/* Fondo oscuro y fuente blanca */
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Sección principal */
+.clases-section {
+  padding: 60px 20px;
+  background-color: #0d0d0d;
+}
+
+/* Título de la sección */
+.clases-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #1cd222;
+  margin-bottom: 40px;
+}
+
+/* Tarjeta de clase */
+.clase-card {
+  background-color: #111;
+  border: 1px solid #1cd22244;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.clase-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 15px #1cd22288;
+}
+
+/* Imagen */
+.clase-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Contenido de la tarjeta */
+.clase-body {
+  padding: 20px;
+}
+
+.clase-body h3 {
+  color: #1cd222;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Botón */
+.btn-ver-video {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #1cd222;
+  color: #000;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn-ver-video:hover {
+  background-color: #16a418;
+  color: white;
+}
+
+form {
+  background-color: #1c1c1c;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 0 15px #1cd22255;
+}
+
+form label {
+  color: #1cd222;
+  font-weight: bold;
+}
+
+form input,
+form textarea {
+  background-color: #222;
+  border: 1px solid #444;
+  color: white;
+}
+
+form input:focus,
+form textarea:focus {
+  border-color: #1cd222;
+  box-shadow: 0 0 5px #1cd222aa;
+  outline: none;
+}
+
+form button {
+  background-color: #1cd222;
+  color: black;
+  font-weight: bold;
+}
+
+form button:hover {
+  background-color: #16a418;
+}
+

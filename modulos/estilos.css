@@ -1,0 +1,331 @@
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+}
+
+.navbar {
+  background-color: #111;
+}
+
+.navbar h1 {
+  margin: 0 5px;
+  font-weight: 700;
+}
+
+.navbar .nav-link {
+  color: white !important;
+}
+
+.navbar .nav-link:hover {
+  color: #1cd222 !important;
+}
+
+.text-green{
+color: #16a418;
+}
+
+.slogan {
+  text-align: right;
+  padding: 60px 20px;
+  background-color: #111;
+}
+
+.slogan-text {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #5c635c;
+  margin-bottom: 20px;
+}
+
+
+
+.carousel-item img {
+  height: 850px;
+  object-fit: cover;
+}
+
+.section-title {
+  color: #1cd222;
+  margin-bottom: 40px;
+}
+
+.instructor-image {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #00ff00; /* borde verde neón */
+  display: block;
+  margin: 0 auto 20px auto; /* centrado + espacio abajo */
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.4); /* sombra suave */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.instructor-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0, 255, 0, 0.6);
+}
+
+.instructor-card {
+  background-color: #000;
+  border: 2px solid #00ff00;
+  color: #fff;
+  padding: 30px 20px;
+  border-radius: 12px;
+  min-height: 720px;
+  width: 100%;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 12px rgba(0, 255, 0, 0.2);
+}
+
+.instructor-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(0, 255, 0, 0.4);
+}
+
+
+.text-green {
+  color: #b4beb4;
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #1cd22288;
+}
+
+
+.espacio-life {
+  padding: 60px 20px;
+}
+
+.espacio-life h1 {
+  color: #1cd222;
+}
+
+.foto-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.foto-item {
+  max-width: 250px;
+  background-color: #111;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #1cd22244;
+}
+
+.foto-item img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.foto-item h2 {
+  margin-top: 10px;
+  color: #1cd222;
+}
+
+.contact-header {
+  color: #1cd222;
+}
+
+.btn-submit {
+  background-color: #1cd222;
+  border: none;
+  color: #000;
+  font-weight: bold;
+}
+
+.btn-submit:hover {
+  background-color: #16a418;
+}
+
+.carrusel-semanal {
+  background-color: #000;
+  color: white;
+  padding: 60px 40px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.titulo-carrusel {
+    text-align: center
+    ;
+  color: #99a399;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+
+.galeria-scroll-auto {
+  animation: scroll-infinito 3s linear infinite;
+  gap: 50px;
+}
+
+.item-dia {
+  flex: 0 0 auto;
+  width: 250px;
+  text-align: center;
+}
+
+.item-dia img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border: 3px solid #1cd222;
+  border-radius: 20px;
+  transition: transform 0.3s ease;
+  background-color: #fff;
+}
+
+.item-dia img:hover {
+  transform: scale(1.1);
+}
+
+.item-dia p {
+  margin-top: 10px;
+  color: #eee;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* Animación infinita */
+@keyframes scroll-infinito {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.galeria-scroll-auto {
+  animation: scroll-infinito 25s linear infinite;
+  gap: 30px;
+  will-change: transform;
+}
+
+.galeria-scroll-auto:hover {
+  cursor: pointer;
+}
+
+div, p{
+    text-align: center;
+    font-size: 18px;
+    color: #b4b4b4;
+}
+
+.espacio-life h1{
+    color: #bcbcbc;
+}
+
+.espacio-life h2{
+    color: #c4c5c4;
+ 
+}
+
+.espacio-life img {
+    width: 250px;
+    height: 250px;
+}
+.creedenciales h1 {
+  display: inline;
+  margin: 0 5px;
+  font-size: 2.5rem;
+}
+
+.text-green {
+  color: #1cd222;
+}
+
+.text-white {
+  color: white;
+}
+.fa-instagram {
+    font-size: 45px;
+    margin-right: 20px; /* Espacio a la derecha */
+    display: inline-block;
+    color: #bbc3bb;
+}
+
+.fa-facebook-f {
+    font-size: 45px;
+    margin-right: 20px;
+    display: inline-block;
+    color: #c2c8c2;
+}
+
+.fa-tiktok{
+    font-size: 45px;
+    margin-right: 20px;
+    display: inline-block;
+    color: #c8cdc8;
+}
+
+.mission-vision {
+  background-color: #0d0d0d;
+  color: #f0f0f0;
+  padding: 80px 20px;
+  background-image: url('https://www.transparenttextures.com/patterns/dark-fabric-2.png');
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+}
+
+.mission-vision .container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 2.8rem;
+  color: #1cd222;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.vision-title {
+  margin-top: 60px;
+}
+
+.section-text {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #ddd;
+  margin-bottom: 30px;
+  text-align: center ;
+  text-wrap: balance;
+}
+ .content-flex {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap; /* Para que se acomode en móvil */
+}
+
+.container {
+  flex: 1 1 60%;
+}
+
+.img-container {
+  flex: 1 1 35%;
+  text-align: right;
+}
+
+.imagen-prom {
+  max-width: 100%;
+  height: auto;
+  }
+  
+  

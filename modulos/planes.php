@@ -1,185 +1,97 @@
-<?php
-// Incluir el archivo de conexión
-include('../modelo/conexion.php');
-
-// Verificar que la conexión se ha establecido
-if (!$conexion) {
-    die("Conexión no establecida.");
-} else {
-    echo "Conexión exitosa.";
-}
-
-// Consultar información del plan
-$sql = "SELECT * FROM planes WHERE id = 1"; // Verifica que haya un plan con id = 1
-$result = $conexion->query($sql);
-
-// Verifica si se encontraron resultados
-if ($result) {
-    if ($result->num_rows > 0) {
-        $plan = $result->fetch_assoc(); // Obtiene el primer resultado
-    } else {
-        $plan = null; // Si no hay resultados, asigna null a $plan
-    }
-} else {
-    die("Error en la consulta: " . $conexion->error);
-}
-
-$conexion->close(); // Asegúrate de usar la misma variable
-?>
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Plan Único - Life Gym</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <style>
+  <meta charset="UTF-8">
+  <title>Planes Life Gym</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
     body {
-        background-color: #000000;
-        font-family: 'Arial', sans-serif;
-        color: #ffffff;
+      background-color: #000;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
     }
 
     .card {
-        border-radius: 12px;
-        border: none;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        background-color: #222222;
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+      border: 1px solid #333;
+      border-radius: 15px;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 20px #39ff14;
     }
 
     .card-title {
-        color: #39FF14;
-        font-size: 2rem;
-        font-weight: bold;
-        margin-bottom: 20px;
+      color: #39ff14;
+      font-weight: bold;
     }
 
-    .card-text {
-        font-size: 1rem;
-        color: #A9A9A9;
-        margin-bottom: 20px;
+    .price {
+      font-size: 1.5rem;
+      color: #fff;
     }
 
-    .image-container img {
-        border-radius: 12px;
-        max-width: 100%;
-        height: auto;
+    .card-body {
+      text-align: center;
     }
 
-    .list-group-item {
-        font-size: 1rem;
-        color: #ffffff;
-        background-color: #333333;
-        border: 1px solid #444444;
+    .plan-container {
+      margin-top: 40px;
     }
 
-    .btn-primary {
-        background-color: #39FF14;
-        border-color: #39FF14;
-        font-size: 1.1rem;
-        padding: 10px 20px;
-        border-radius: 8px;
+    .btn-custom {
+      background-color: #39ff14;
+      border: none;
+      color: #000;
+      font-weight: bold;
     }
 
-    .btn-primary:hover {
-        background-color: rgb(34, 5, 199);
-        border-color: rgb(5, 13, 134);
+    .btn-custom:hover {
+      background-color: #2ecc71;
+      color: #000;
     }
+  </style>
+</head>
+<body>
 
-    .form-label {
-        font-weight: bold;
-        color: #39FF14;
-    }
+  <div class="container plan-container">
+    <h2 class="text-center mb-5 text-white">Nuestros Planes Life Gym</h2>
+    <div class="row g-4">
 
-    input[type="text"], select {
-        border-radius: 8px;
-        padding: 10px;
-        border: 1px solid rgb(196, 196, 196);
-        font-size: 1rem;
-        background-color: #222222;
-        color: #fff;
-    }
+      <?php
+      $planes = [
+        ['titulo' => 'Sesión Individual', 'precio' => '10.000', 'detalle' => '1 sesión'],
+        ['titulo' => 'Semana Fit', 'precio' => '30.000', 'detalle' => '7 días de entrenamiento'],
+        ['titulo' => 'Mensual', 'precio' => '75.000', 'detalle' => '30 días full acceso'],
+        ['titulo' => 'Estudiante', 'precio' => '70.000', 'detalle' => 'Descuento con carné'],
+        ['titulo' => 'Zumba + Fit + Gym', 'precio' => '85.000', 'detalle' => 'Acceso completo a todas las clases'],
+        ['titulo' => 'Tiquetera 10', 'precio' => '60.000', 'detalle' => '10 sesiones a tu ritmo'],
+        ['titulo' => 'Tiquetera 20', 'precio' => '100.000', 'detalle' => '20 sesiones libres'],
+        ['titulo' => 'Tiquetera 30', 'precio' => '130.000', 'detalle' => '30 sesiones para ti'],
+        ['titulo' => 'Plan Parejas', 'precio' => '140.000', 'detalle' => 'Entrena en pareja 30 días'],
+        ['titulo' => 'Plan VIP', 'precio' => '200.000', 'detalle' => 'Todo incluido + asesoría privada']
+      ];
 
-    .mb-3 {
-        margin-bottom: 1.5rem;
-    }
-
-    .container {
-        max-width: 1200px;
-        padding: 20px;
-    }
-
-    @media (max-width: 768px) {
-        .card {
-            padding: 15px;
-        }
-
-        .card-title {
-            font-size: 1.5rem;
-        }
-
-        .list-group-item {
-            font-size: 0.9rem;
-        }
-    }
-    </style>
-    <div class="container my-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-6">
-                <div class="card shadow-lg rounded">
-                    <div class="card-body">
-                        <?php if ($plan): ?>
-                            <h2 class="card-title text-center mb-4"><?= $plan['nombre'] ?></h2>
-                            <p class="card-text text-center"><?= $plan['descripcion'] ?></p>
-
-                            <div class="image-container text-center my-3">
-                                <img src="888.png" alt="Imagen de Membresía" class="img-fluid rounded">
-                            </div>
-
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><strong>Horario:</strong> Lunes a viernes de 5:00 AM a 10:00 PM</li>
-                                <li class="list-group-item"><strong>Sábados:</strong> 7:00 AM a 5:00 PM</li>
-                                <li class="list-group-item"><strong>Acceso:</strong> A todos los servicios y áreas del gimnasio</li>
-                                <li class="list-group-item"><strong>Asesoramiento:</strong> Con instructores profesionales</li>
-                                <li class="list-group-item"><strong>Duración:</strong> <?= $plan['duracion'] ?> días</li>
-                                <li class="list-group-item"><strong>Precio:</strong> $<?= number_format($plan['precio'], 2, ',', '.') ?> COP</li>
-                            </ul>
-
-                            <form action="procesar_pago.php" method="post" class="mt-4">
-                                <input type="hidden" name="plan_id" value="<?= $plan['id'] ?>">
-
-                                <div class="mb-3">
-                                    <label for="metodo" class="form-label">Método de pago</label>
-                                    <select name="metodo" id="metodo" class="form-select" required aria-label="Método de pago">
-                                        <option value="">Selecciona uno</option>
-                                        <option value="nequi">Nequi</option>
-                                        <option value="bancolombia">Bancolombia</option>
-                                    </select>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="numero" class="form-label">Número de contacto</label>
-                                    <input type="text" name="numero" id="numero" class="form-control" placeholder="Ej: 3001234567" required aria-label="Número de contacto">
-                                </div>
-
-                                <button type="submit" class="btn btn-primary w-100">Simular Pago</button>
-                            </form>
-                        <?php else: ?>
-                            <p class="alert alert-danger text-center">No se encontró el plan solicitado.</p>
-                        <?php endif; ?>
-                    </div>
-                </div>
+      foreach ($planes as $plan): ?>
+        <div class="col-md-6 col-lg-4 col-xl-3">
+          <div class="card h-100 p-3">
+            <div class="card-body d-flex flex-column justify-content-between">
+              <h5 class="card-title"><?= $plan['titulo'] ?></h5>
+              <p class="price">$<?= $plan['precio'] ?> COP</p>
+              <p class="card-text"><?= $plan['detalle'] ?></p>
+              <a href="#" class="btn btn-custom mt-3">Adquirir</a>
             </div>
+          </div>
         </div>
-    </div>
+      <?php endforeach; ?>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

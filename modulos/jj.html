@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Life Gym</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Estilos personalizados -->
+  <link href="style.css" rel="stylesheet">
+
+  <!-- FontAwesome para íconos -->
+  <script src="https://kit.fontawesome.com/YOUR-KIT-ID.js" crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+  <style>
+    /* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* GLOBAL */
+body {
+  background-color: #000;
+  color: #b4b4b4;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* NAVBAR */
+.navbar {
+  background-color: #111;
+}
+
+.navbar h1 {
+  margin: 0 5px;
+  font-weight: 700;
+}
+
+.navbar .nav-link {
+  color: white !important;
+}
+
+.navbar .nav-link:hover {
+  color: #1cd222 !important;
+}
+
+.text-green {
+  color: #1cd222;
+}
+
+.text-white {
+  color: white;
+}
+
+/* SLOGAN */
+.slogan {
+  text-align: right;
+  padding: 60px 20px;
+  background-color: #111;
+}
+
+.slogan-text {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #5c635c;
+  margin-bottom: 20px;
+}
+
+/* CARRUSEL */
+.carousel-item img {
+  height: 550px;
+  object-fit: cover;
+}
+
+/* INSTRUCTORES */
+.section-title {
+  color: #1cd222;
+  margin-bottom: 40px;
+}
+
+.instructor-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #8f9f8f;
+  display: block;
+}
+
+.card {
+  background-color: #111;
+  border: 1px solid #333;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #1cd22288;
+}
+
+/* ESPACIO LIFE */
+.espacio-life {
+  padding: 60px 20px;
+}
+
+.espacio-life h1,
+.espacio-life h2 {
+  color: #bcbcbc;
+}
+
+.foto-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.foto-item {
+  max-width: 250px;
+  background-color: #111;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #1cd22244;
+}
+
+.foto-item img {
+  width: 250px;
+  height: 250px;
+  border-radius: 8px;
+}
+
+.foto-item h2 {
+  margin-top: 10px;
+  color: #1cd222;
+}
+
+/* CONTACTO */
+.contact-header {
+  color: #1cd222;
+}
+
+.btn-submit {
+  background-color: #1cd222;
+  border: none;
+  color: #000;
+  font-weight: bold;
+}
+
+.btn-submit:hover {
+  background-color: #16a418;
+}
+
+/* CARRUSEL SEMANAL */
+.carrusel-semanal {
+  background-color: #000;
+  color: #b4b4b4;
+  padding: 40px 20px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.titulo-carrusel {
+  color: #99a399;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.galeria-scroll-auto {
+  display: flex;
+  animation: scroll-infinito 25s linear infinite;
+  gap: 30px;
+  will-change: transform;
+}
+
+.item-dia {
+  flex: 0 0 auto;
+  width: 250px;
+  text-align: center;
+}
+
+.item-dia img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border: 3px solid #1cd222;
+  border-radius: 20px;
+  background-color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.item-dia img:hover {
+  transform: scale(1.1);
+}
+
+.item-dia p {
+  margin-top: 10px;
+  color: #b4b4b4;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* ANIMACIÓN */
+@keyframes scroll-infinito {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+/* TEXTO GENERAL */
+div, p {
+  text-align: center;
+  font-size: 18px;
+  color: #b4b4b4;
+}
+
+/* REDES */
+.fa-instagram, .fa-facebook-f, .fa-tiktok {
+  font-size: 45px;
+  margin-right: 20px;
+}
+
+.fa-instagram { color: #bbc3bb; }
+.fa-facebook-f { color: #c2c8c2; }
+.fa-tiktok { color: #c8cdc8; }
+
+/* MISIÓN Y VISIÓN */
+.mission-vision {
+  background-color: #0d0d0d;
+  color: #f0f0f0;
+  padding: 80px 20px;
+  background-image: url('https://www.transparenttextures.com/patterns/dark-fabric-2.png');
+  text-align: center;
+}
+
+.mission-vision .container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.vision-title {
+  margin-top: 60px;
+}
+
+.section-text {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #ddd;
+  margin-bottom: 30px;
+  text-wrap: balance;
+}
+
+.content-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.img-container {
+  flex: 1 1 35%;
+  text-align: right;
+}
+
+.imagen-prom {
+  max-width: 100%;
+  height: auto;
+}
+
+  </style>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <h1  class="text-green">LIFE</h1>
+      <h1 class="text-white">GYM</h1>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="planes.php">Planes</a></li>
+          <li class="nav-item"><a class="nav-link" href="productos.html">Productos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
+          <li class="nav-item"><a class="nav-link" href="mision vision.html">Misión y Visión</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Calendario</a>
+            <ul class="dropdown-menu bg-dark">
+              <li><a class="dropdown-item text-white" href="#">Clases</a></li>
+              <li><a class="dropdown-item text-white" href="eventos.html">Eventos Life Gym</a></li>
+            </ul>
+          </li>
+        </ul>
+        <button id="logoutBtn" class="btn btn-success">Cerrar Sesión</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Slogan -->
+  <div class="slogan">
+    <div class="slogan-text">DESPIERTA TU FUERZA INTERIOR, ALCANZA LO IMPOSIBLE</div>
+    
+    <!--<img  src="principal1.png" alt="Imagen inspiradora" />
+  </div>
+
+  <!-- Carrusel -->
+  <div id="carouselExampleAutoplaying" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active"><img src="imagenes/life.png" class="d-block w-100" alt="Entrenamiento 1"></div>
+      <div class="carousel-item"><img src="imagenes/gym.png" class="d-block w-100" alt="Entrenamiento 2"></div>
+     <div class="carousel-item"><img src="imagenes/gym1.png" class="d-block w-100" alt="Entrenamiento 3"></div>
+      <div class="carousel-item"><img src="imagenes/mancuerna1.png" class="d-block w-100" alt="Entrenamiento 4"></div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button> <br>
+      <p>Bienvenidos a nuestro espacio de bienestar y salud. En Espacio Life encontrarás un ambiente moderno y confortable 
+        donde podrás disfrutar de nuestras instalaciones de última tecnología, diseñadas para ayudarte a alcanzar
+         tus objetivos físicos. Ya sea que estés buscando mejorar tu fuerza, flexibilidad o resistencia,
+          en Life Gym contamos con los mejores equipos y profesionales para apoyarte en tu viaje fitness.</p>
+  </div>
+
+  <!-- Instructores -->
+<section id="instructors" class="py-5 text-center bg-dark text-white">
+  <div class="container">
+    <h2 class="section-title mb-5 text-green">Life Gym: Transformamos tu vida con instructores calificados.</h2>
+    <div class="row justify-content-center g-4">
+
+      <!-- Instructor 1 -->
+      <div class="col-md-4">
+        <div class="card bg-black border-success h-100 text-white">
+          <img src="imagenes/profenico.png" class="instructor-image mx-auto mt-4" alt="Coach Nicolás">
+          <div class="card-body">
+            <h4 class="card-title text-green">Coach Nicolás</h4>
+            <ul class="list-unstyled text-start ps-3">
+              <li>✔️ Entrenador deportivo y preparador físico certificado</li> <br>
+              <li>✔️ Especialista en métodos de entrenamiento</li> <br>
+              <li>✔️ 9 años de experiencia</li> <br>
+              <li>✔️ Atleta de fisicoculturismo y fitness</li> <br>
+              <a href="https://instagram.com/jozefnicolas_" target="_blank">
+              <i class="fab fa-instagram"></i> Sígueme en Instagra</a>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instructor 2 -->
+      <div class="col-md-4">
+        <div class="card bg-black border-success h-100 text-white">
+          <img src="imagenes/profepipe.png" class="instructor-image mx-auto mt-4" alt="Coach Pipe">
+          <div class="card-body">
+            <h4 class="card-title text-green">Coach Pipe</h4>
+            <ol>✔️ Educador fisico certificado</ol> 
+            <ol>✔️ Cross trainer</ol> 
+            <ol>✔️ Entrenador en psicologia deportiva</ol> 
+            <ol>✔️ Coach personalizado</ol> 
+            <ol>✔️ 5 Años de experiencia</ol> 
+            <ol>✔️ Atleta de condicion fisica</ol> 
+          </div>
+        </div>
+      </div>
+
+      <!-- Instructor 3 -->
+      <div class="col-md-4">
+        <div class="card bg-black border-success h-100 text-white">
+          <img src="imagenes/profemario.png" class="instructor-image mx-auto mt-4" alt="Coach Mario">
+          <div class="card-body">
+            <h4 class="card-title text-green">Coach Mario</h4>
+            <ol>✔️ Licenciado en educacion fisica</ol> 
+            <ol>✔️ Entrenador deportivo</ol> 
+            <ol>✔️ Diplomado en actividad fisica en adulto mayor </ol> 
+            <ol>✔️ Certificado en planificacion control y evalucion del entrenamiento deportivo metodologia agil micovid</ol> 
+            
+         
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!--carousel motivacional-->
+
+<section class="carrusel-semanal">
+  <h3 class="titulo-carrusel">Motivación Semanal</h3>
+  <div class="container-fluid position-relative">
+    <div class="galeria-scroll-auto d-flex" id="galeriaScroll">
+      <div class="item-dia">
+<img src="imagenes/lunes.png" alt="Lunes" data-bs-toggle="modal" data-bs-target="#modalImagen" onclick="verImagen(this)">
+        <p>Lunes</p>
+      </div>
+      <div class="item-dia">
+        <img src="imagenes/martes.png" alt="Martes" data-bs-toggle="modal" data-bs-target="#modalImagen" onclick="verImagen(this)">
+        <p>Martes</p>
+      </div>
+      <div class="item-dia">
+        <img src="imagenes/miercoles.png" alt="Miércoles" data-bs-toggle="modal" data-bs-target="#modalImagen" onclick="verImagen(this)">
+        <p>Miércoles</p>
+      </div>
+      <div class="item-dia">
+        <img src="imagenes/jueves.png" alt="Miércoles" data-bs-toggle="modal" data-bs-target="#modalImagen" onclick="verImagen(this)">
+        <p>Miércoles</p>
+      </div>
+      <div class="item-dia">
+        <img src="imagenes/viernes.png" alt="Miércoles" data-bs-toggle="modal" data-bs-target="#modalImagen" onclick="verImagen(this)">
+        <p>Miércoles</p>
+      </div>
+      <div class="item-dia">
+        <img src="imagenes/sabado.png" alt="Miércoles" data-bs-toggle="modal" data-bs-target="#modalImagen" onclick="verImagen(this)">
+        <p>Miércoles</p>
+      </div>
+      <div class="item-dia">
+        <img src="imagenes/domingo.png" alt="Miércoles" data-bs-toggle="modal" data-bs-target="#modalImagen" onclick="verImagen(this)">
+        <p>Miércoles</p>
+      </div>
+     
+    </div>
+  </div>
+</section>
+
+<!-- Modal de imagen ampliada -->
+<div class="modal fade" id="modalImagen" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-dark text-white border border-success">
+      <div class="modal-header border-0">
+        <h5 class="modal-title" id="modalTitulo"></h5>
+        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body text-center">
+        <img id="SimagenGrande" src="" class="img-fluid rounded border border-success" alt="Imagen grande">
+      </div>
+    </div>
+  </div>
+</div>
+<!--secciones de entrenamiento-->
+
+<section class="espacio-life">
+        <h1>Descubre Life Gym: innovación, bienestar y entrenamiento de alto nivel.</h1> <br>
+      
+        <div class="foto-container">
+            <div class="foto-item">
+                <img src="imagenes/barra.jpg" alt="Foto del gimnasio 1" class="foto">
+                <h2>Equipos de peso librel</h2>
+            </div>
+            <div class="foto-item">
+                <img src="imagenes/barra1.jpg" alt="Foto del gimnasio 2" class="foto">
+                <h2>Mancuernas Bancos</h2>
+            </div>
+            <div class="foto-item">
+                <img src="imagenes/barra 2.jpg" alt="Foto del gimnasio 3" class="foto">
+                <h2>Zona de cardio y boz</h2>
+            </div>
+            <div class="foto-item">
+                <img src="imagenes/barra 3.jpg" alt="Foto del gimnasio 4" class="foto">
+                <h2>Bandas elipticas</h2>
+            </div>
+        </div>
+    </section>
+
+
+
+  <!-- Contacto -->
+  <div id="contact" class="container my-5">
+    <h2 class="contact-header text-center">Contáctanos</h2>
+    <p class="contact-text text-center">¡Déjanos tu mensaje!</p>
+
+    <form id="contact-form">
+      <div class="mb-3"><input type="text" class="form-control" name="nombre" placeholder="Nombre" required></div>
+      <div class="mb-3"><input type="email" class="form-control" name="email" placeholder="Correo electrónico" required></div>
+      <div class="mb-3"><textarea class="form-control" name="mensaje" rows="5" placeholder="Mensaje" required></textarea></div>
+      <button type="submit" class="btn-submit btn btn-primary">Enviar</button>
+    </form>
+
+    <div id="mensaje-estado" class="text-center mt-3"></div>
+  </div>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#contact-form").submit(function (event) {
+            event.preventDefault(); // Evita recarga
+    
+            var formData = $(this).serialize(); // Serializa el formulario
+    
+            $.ajax({
+                type: "POST",
+                url: "contacto.php", // ✅ Ruta corregida
+                data: formData,
+                success: function (response) {
+                    $('#contact-form')[0].reset(); // Limpia el formulario
+                    $('#mensaje-estado').html('<div class="alert alert-success">' + response + '</div>');
+                },
+                error: function () {
+                    $('#mensaje-estado').html('<div class="alert alert-danger">Hubo un error al enviar el mensaje.</div>');
+                }
+            });
+        });
+    });
+</script>
+ <div class="creedenciales">
+  <h1 class="text-green">LIFE</h1>
+  <h1 class="text-white">GYM</h1>
+</div> <hr>
+  
+<div>
+  <h3>Síguenos</h3> <br>
+  <a href="https://www.instagram.com/lifegympasto/" target="_blank">
+    <i class="fab fa-instagram"></i>
+  </a> 
+
+  <a href="https://www.facebook.com/profile.php?id=61558048774333" target="_blank">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+
+  <a href="https://www.tiktok.com/@life_gym_pasto" target="_blank">
+    <i class="fab fa-tiktok"></i>
+  </a> 
+
+</div> <br> <hr>
+<!--horario-->
+<div class="horario">
+  <h3>Horario de Atención</h3>
+  <ul>
+    <ol><strong>Lunes a viernes:</strong> 5:00 a.m. - 10:00 p.m. (Jornada continua)</ol>
+    <ol><strong>Sábados:</strong> 7:00 a.m. - 7:00 p.m.</ol>
+    <ol><strong>Domingos y festivos:</strong> 8:00 a.m. - 12:00 p.m.</ol>
+  </ul> <br>
+</div>
+
+
+    
+    <footer>
+        <p>&copy; 2024 Life Gym. Todos los derechos reservados.</p>
+    </footer>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="index.js"></script>
+</body>
+</html>
