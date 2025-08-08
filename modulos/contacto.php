@@ -3,7 +3,8 @@
 
 // Verificar si se puede incluir la conexión
 if (file_exists("../modelo/conexion.php")) {
-    include("../modelo/conexion.php");
+include_once(__DIR__ . "/../modelo/conexion.php");
+
 } else {
     die("Error: No se puede incluir el archivo de conexión.");
 }
