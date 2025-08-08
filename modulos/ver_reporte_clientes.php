@@ -1,16 +1,15 @@
 <?php
-$conexion = new mysqli("localhost", "root", "903135Nicolas", "life_gym");
-if ($conexion->connect_error) {
-    die("Error de conexión: " . $conexion->connect_error);
+
+// modulos/ver_reporte_clientes.php
+
+include_once(__DIR__ . "/../modelo/conexion.php");
+
+if (!isset($conexion)) {
+    die("❌ Error: No se estableció la conexión con la base de datos.");
 }
 
-$nombreCliente = isset($_GET['nombre']) ? urldecode($_GET['nombre']) : '';
+// Tu código a partir de aquí...
 
-// Eliminar
-if (isset($_POST['eliminar_id'])) {
-    $idEliminar = intval($_POST['eliminar_id']);
-    $conexion->query("DELETE FROM reportes WHERE id = $idEliminar");
-}
 
 // Actualizar
 if (isset($_POST['actualizar_id'])) {
