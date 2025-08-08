@@ -1,7 +1,8 @@
 <?php
 // modulos/ver_reporte_clientes.php
 
-include_once(__DIR__ . "modelo/conexion.php");
+include_once(__DIR__ . "../modelo/conexion.php");
+
 
 if (!isset($conexion)) {
     die("❌ Error: No se estableció la conexión con la base de datos.");
