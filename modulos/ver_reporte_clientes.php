@@ -1,17 +1,19 @@
 <?php
-
 // modulos/ver_reporte_clientes.php
 
-include_once(__DIR__ . "/../modelo/conexion.php");
+include_once(__DIR__ . "modelo/conexion.php");
 
 if (!isset($conexion)) {
     die("❌ Error: No se estableció la conexión con la base de datos.");
 }
 
-// Tu código a partir de aquí...
+// Asegura que se haya recibido el nombre por GET
+$nombreCliente = $_GET['nombre'] ?? '';
+if (empty($nombreCliente)) {
+    die("❌ No se proporcionó el nombre del cliente.");
+}
 
-
-// Actualizar
+// Actualizar reporte
 if (isset($_POST['actualizar_id'])) {
     $id = intval($_POST['actualizar_id']);
     $peso = $_POST['peso'];
@@ -23,80 +25,30 @@ if (isset($_POST['actualizar_id'])) {
     $triceps = $_POST['carga_triceps'];
     $hombro = $_POST['carga_hombro'];
 
-    $conexion->query("UPDATE reportes SET
-        peso='$peso', estatura='$estatura', edad='$edad',
-        carga_pecho='$pecho', carga_sentadilla='$sentadilla',
-        carga_biceps='$biceps', carga_triceps='$triceps', carga_hombro='$hombro'
-        WHERE id=$id");
+    $sql_update = "UPDATE reportes SET
+        peso = :peso, estatura = :estatura, edad = :edad,
+        carga_pecho = :pecho, carga_sentadilla = :sentadilla,
+        carga_biceps = :biceps, carga_triceps = :triceps, carga_hombro = :hombro
+        WHERE id = :id";
+
+    $stmt = $conexion->prepare($sql_update);
+    $stmt->execute([
+        ':peso' => $peso,
+        ':estatura' => $estatura,
+        ':edad' => $edad,
+        ':pecho' => $pecho,
+        ':sentadilla' => $sentadilla,
+        ':biceps' => $biceps,
+        ':triceps' => $triceps,
+        ':hombro' => $hombro,
+        ':id' => $id
+    ]);
 }
 
-// Volver a consultar después de eliminar o actualizar
-$sql = "SELECT * FROM reportes WHERE nombre = '$nombreCliente' ORDER BY fecha_reporte DESC";
-$resultado = $conexion->query($sql);
+// Consultar reportes
+$sql = "SELECT * FROM reportes WHERE nombre = :nombre ORDER BY fecha_reporte DESC";
+$stmt = $conexion->prepare($sql);
+$stmt->execute([':nombre' => $nombreCliente]);
+$reportes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Reporte de <?php echo htmlspecialchars($nombreCliente); ?></title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="container mt-5">
 
-<h2>Reporte físico de: <?php echo htmlspecialchars($nombreCliente); ?></h2>
-
-<table class="table table-bordered table-striped mt-4">
-  <thead class="table-dark">
-    <tr>
-      <th>Fecha</th>
-      <th>Peso</th>
-      <th>Estatura</th>
-      <th>Edad</th>
-      <th>Pecho</th>
-      <th>Sentadilla</th>
-      <th>Bíceps</th>
-      <th>Tríceps</th>
-      <th>Hombro</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php
-    if ($resultado->num_rows > 0) {
-        while ($fila = $resultado->fetch_assoc()) {
-            echo "
-            <form method='POST' action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "?nombre=" . urlencode($nombreCliente) . "'>
-            <tr>
-                <td>{$fila['fecha_reporte']}</td>
-                <td><input type='number' step='0.1' name='peso' value='{$fila['peso']}' class='form-control'></td>
-                <td><input type='number' step='0.01' name='estatura' value='{$fila['estatura']}' class='form-control'></td>
-                <td><input type='number' name='edad' value='{$fila['edad']}' class='form-control'></td>
-                <td><input type='number' name='carga_pecho' value='{$fila['carga_pecho']}' class='form-control'></td>
-                <td><input type='number' name='carga_sentadilla' value='{$fila['carga_sentadilla']}' class='form-control'></td>
-                <td><input type='number' name='carga_biceps' value='{$fila['carga_biceps']}' class='form-control'></td>
-                <td><input type='number' name='carga_triceps' value='{$fila['carga_triceps']}' class='form-control'></td>
-                <td><input type='number' name='carga_hombro' value='{$fila['carga_hombro']}' class='form-control'></td>
-                <td class='d-flex flex-column gap-1'>
-                    <input type='hidden' name='actualizar_id' value='{$fila['id']}'>
-                    <button type='submit' class='btn btn-sm btn-primary'>Guardar</button>
-            </form>
-            <form method='POST' action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "?nombre=" . urlencode($nombreCliente) . "'>
-                    <input type='hidden' name='eliminar_id' value='{$fila['id']}'>
-                    <button type='submit' class='btn btn-sm btn-danger' onclick='return confirm(\"¿Eliminar este reporte?\")'>Eliminar</button>
-                </form>
-                </td>
-            </tr>";
-        }
-    } else {
-        echo "<tr><td colspan='10'>No hay reportes disponibles.</td></tr>";
-    }
-
-    $conexion->close();
-    ?>
-  </tbody>
-</table>
-
-<a href="reportes_cliente.php" class="btn btn-secondary">Volver</a>
-
-</body>
-</html>
